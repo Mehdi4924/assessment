@@ -1,0 +1,144 @@
+# ignore files for react-native
+
+# OSX
+#
+/assessment/.DS_Store
+
+# Xcode
+#
+/assessment/build/
+/assessment/*.pbxuser
+!/assessment/default.pbxuser
+/assessment/*.mode1v3
+!/assessment/default.mode1v3
+/assessment/*.mode2v3
+!/assessment/default.mode2v3
+/assessment/*.perspectivev3
+!/assessment/default.perspectivev3
+/assessment/xcuserdata
+/assessment/*.xccheckout
+/assessment/*.moved-aside
+/assessment/DerivedData
+/assessment/*.hmap
+/assessment/*.ipa
+/assessment/*.xcuserstate
+/assessment/**/.xcode.env.local
+
+# Android/IntelliJ
+#
+/assessment/build/
+/assessment/.idea
+/assessment/.gradle
+/assessment/local.properties
+/assessment/*.iml
+/assessment/*.hprof
+/assessment/.cxx/
+/assessment/*.keystore
+!/assessment/debug.keystore
+
+# node.js
+#
+/assessment/node_modules/
+/assessment/npm-debug.log
+/assessment/yarn-error.log
+
+# fastlane
+#
+/assessment/**/fastlane/report.xml
+/assessment/**/fastlane/Preview.html
+/assessment/**/fastlane/screenshots
+/assessment/**/fastlane/test_output
+
+# Bundle artifact
+/assessment/*.jsbundle
+
+# Ruby / CocoaPods
+/assessment/**/Pods/
+/assessment/vendor/bundle/
+
+# Temporary files created by Metro to check the health of the file watcher
+/assessment/.metro-health-check*
+
+# testing
+/assessment/coverage
+
+# Yarn
+/assessment/.yarn/*
+!/assessment/.yarn/patches
+!/assessment/.yarn/plugins
+!/assessment/.yarn/releases
+!/assessment/.yarn/sdks
+!/assessment/.yarn/versions
+
+
+# Ignore files for backend
+# Node.js dependencies
+/backend/node_modules/
+/backend/npm-debug.log
+/backend/yarn-error.log
+/backend/pnpm-debug.log
+/backend/.pnp
+/backend/.pnp.js
+
+# Environment variables
+/backend/.env
+/backend/.env.local
+/backend/.env.development
+/backend/.env.test
+/backend/.env.production
+
+# Logs
+/backend/logs
+/backend/*.log
+/backend/npm-debug.log*
+/backend/yarn-debug.log*
+/backend/yarn-error.log*
+/backend/pnpm-debug.log*
+/backend/lerna-debug.log*
+/backend/coverage/
+
+# Binaries
+/backend/dist
+/backend/build
+/backend/.cache
+
+# Database
+/backend/mongodb-data/
+/backend/dump/
+
+# Editor/IDE files
+/backend/.vscode/
+/backend/.idea/
+/backend/*.suo
+/backend/*.ntvs*
+/backend/*.njsproj
+/backend/*.sln
+/backend/*.sw?
+
+# OS files
+/backend/.DS_Store
+/backend/Thumbs.db
+
+# Testing
+/backend/jest-cache/
+/backend/jest-test-results.json
+/backend/coverage
+
+# TypeScript
+/backend/*.tsbuildinfo
+
+# Docker
+/backend/docker-compose.override.yml
+/backend/.dockerignore
+
+# Miscellaneous
+/backend/.husky/_/
+/backend/site/
+/backend/.gatsby/
+/backend/.cache/
+/backend/.pnpm-store/
+
+# Ignore Firebase files
+/backend/.firebase/
+/backend/firestore.indexes.json
+/backend/firestore.rules

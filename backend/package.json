@@ -1,0 +1,11 @@
+{
+  "name": "assessment",
+  "version": "1.0.0",
+  "description": "This repository contains the implementation of a full-stack MERN (MongoDB, Express.js, React.js, Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Iftikhar Mehdi",
+  "license": "ISC"
+}
