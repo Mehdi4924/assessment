@@ -25,7 +25,7 @@ export default {
     try {
       const page = parseInt(req.query.page) || 1;
       const limit = parseInt(req.query.limit) || 10;
-      const tags = req.query.tags;
+
       if (req.query.tags) {
         const tags = req.query.tags.split(",");
         const tagRegexArray = tags.map((tag) => new RegExp(`^${tag}$`, "i"));
@@ -33,6 +33,15 @@ export default {
           tags: { $in: tagRegexArray },
         }).populate("author");
         return res.status(200).json({ blogs: [...findedBlogs] });
+      } else if (req.query.search) {
+        const search = req.query.search;
+        const blogs = await Blogs.find({
+          $or: [
+            { title: { $regex: search, $options: "i" } },
+            { subTitle: { $regex: search, $options: "i" } },
+          ],
+        }).populate("author");
+        return res.status(200).json({ blogs: [...blogs] });
       }
       const skip = (page - 1) * limit;
       const findedBlogs = await Blogs.find()
@@ -41,6 +50,7 @@ export default {
         .populate("author");
       return res.status(200).json({ blogs: [...findedBlogs] });
     } catch (error) {
+      console.log(error);
       return res
         .status(500)
         .json({ messsage: error?.message || "Internal Server Error" });
@@ -53,6 +63,19 @@ export default {
         new: true,
       }).populate("author");
       res.status(200).json(updatedBlog);
+    } catch (error) {
+      res.status(500).json({ message: "Error updating blog", error });
+    }
+  },
+  getBlogTags: async (req, res) => {
+    try {
+      const uniqueTags = await Blogs.aggregate([
+        { $unwind: "$tags" },
+        { $group: { _id: "$tags" } },
+        { $project: { _id: 0, tag: "$_id" } },
+      ]);
+      const tags = uniqueTags.map((item) => item.tag);
+      res.status(200).json({ tags: [...tags] });
     } catch (error) {
       res.status(500).json({ message: "Error updating blog", error });
     }

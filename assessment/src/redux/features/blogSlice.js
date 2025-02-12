@@ -9,7 +9,7 @@ const blogSlice = createSlice({
     status: 'idle',
     error: null,
   },
-
+  reducers: {},
   extraReducers: builder => {
     builder
       .addCase(fetchBlogs.pending, state => {
@@ -27,5 +27,4 @@ const blogSlice = createSlice({
   },
 });
 
-export const {filterByTag} = blogSlice.actions;
 export default blogSlice.reducer;

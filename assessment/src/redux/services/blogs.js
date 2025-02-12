@@ -7,14 +7,22 @@ const api = axios.create({
 });
 
 export default fetchBlogs = createAsyncThunk('blogs/fetchBlogs', async data => {
-  const {tags, page, limit} = data;
+  const {search, tags, page, limit} = data;
+  console.log(data)
   let url;
-  if (!tags) {
-    url = `/blogs/?page=${page || 1}&limit=${limit || 10}`;
-  } else {
+  if (!!tags) {
     url = `/blogs/?tags=${tags}`;
+  } else if (!!search) {
+    url = `/blogs/?search=${search}`;
+  } else {
+    url = `/blogs/?page=${page || 1}&limit=${limit || 10}`;
   }
   const response = await api.get(url);
 
   return response.data.blogs;
+});
+
+export const fetchTags = createAsyncThunk('blogs/fetchTags', async data => {
+  const response = await api.get('/blogs/tags');
+  return response.data.tags;
 });

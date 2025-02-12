@@ -9,12 +9,13 @@ import {
 import {useSelector} from 'react-redux';
 import BlogItem from './components/BlogItem';
 import {useDispatch} from 'react-redux';
-import fetchBlogs from '../redux/services/blogs';
+import fetchBlogs, {fetchTags} from '../redux/services/blogs';
 import TagFilter from './components/TagsFilter';
 const BlogList = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchBlogs({page: 1, limit: 10}));
+    dispatch(fetchTags());
   }, []);
 
   const blogs = useSelector(state => state.blogs.filteredData);
